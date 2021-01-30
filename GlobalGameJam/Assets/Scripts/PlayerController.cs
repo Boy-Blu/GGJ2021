@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
         if (CurrentState == PlayerStates.Grounded)
         {
             //if we press jump
-            if (_player.GetButtonDown (RewiredMappings.JUMP))
+            if (_player.GetButton (RewiredMappings.JUMP))
             {
                 //jump upwards
                 JumpUp();
@@ -111,8 +111,9 @@ public class PlayerController : MonoBehaviour
         else if (CurrentState == PlayerStates.InAir)
         {
             //check for ledge grabs
-            if (_player.GetButtonDown (RewiredMappings.GRAB))
+            if (_player.GetButton (RewiredMappings.GRAB))
             {
+                Debug.LogWarning("AttempGrabed Ledge!");
                 Vector3 LedgePos = Coli.CheckLedges();
                 if (LedgePos != Vector3.zero)
                 {
@@ -145,7 +146,7 @@ public class PlayerController : MonoBehaviour
         else if (CurrentState == PlayerStates.OnWalls)
         {
             //check for ledge grabs
-            if (_player.GetButtonDown (RewiredMappings.GRAB))
+            if (_player.GetButton (RewiredMappings.GRAB))
             {
                 Vector3 LedgePos = Coli.CheckLedges();
 
@@ -222,7 +223,7 @@ public class PlayerController : MonoBehaviour
             TurnPlayer(CamX, Del, TurnSpeed);
 
             //check for crouching 
-            if(_player.GetButtonDown (RewiredMappings.CROUCH))
+            if(_player.GetButton (RewiredMappings.CROUCH))
             { 
                 //start crouching
                 if(!Crouch)
