@@ -5,6 +5,19 @@
 			<ChildrenList>
 				<RandomSequenceContainer Name="footsteps" ID="{242C6D85-EA43-4A07-AD4E-FCECDBAF8C9D}" ShortID="227503987">
 					<PropertyList>
+						<Property Name="Lowpass" Type="int16">
+							<ValueList>
+								<Value>40</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Pitch" Type="int32">
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{0C2CA67F-ECF4-4918-97F7-5C14A82CFB1E}"/>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+						<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
 						<Property Name="RandomOrSequence" Type="int16" Value="0"/>
 					</PropertyList>
 					<ReferenceList>
@@ -17,6 +30,21 @@
 					</ReferenceList>
 					<ChildrenList>
 						<RandomSequenceContainer Name="footstepsHeel" ID="{BE422229-A8B2-4CE5-90E9-E4B927C04B0A}" ShortID="391365434">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{3F1B4A0E-65CF-4D60-8738-45B94C57345C}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="126"/>
+													<Property Name="Min" Type="Real64" Value="-126"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3533B714-1297-404C-A4D8-ED9597A3E287}"/>
@@ -25,8 +53,142 @@
 									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EE6BA90F-2649-483D-B119-4C1D19437CC4}"/>
 								</Reference>
 							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="outdoorheel1" ID="{601032D8-5FBF-4B3E-923B-8051E15DB517}" ShortID="187431104">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3533B714-1297-404C-A4D8-ED9597A3E287}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EE6BA90F-2649-483D-B119-4C1D19437CC4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="outdoorheel1" ID="{AB40BA0E-7E2A-4B91-95F1-67C79D532F97}">
+											<Language>SFX</Language>
+											<AudioFile>outdoorheel1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="929586529"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="outdoorheel1" ID="{AB40BA0E-7E2A-4B91-95F1-67C79D532F97}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="outdoorheel2" ID="{39017385-E734-456C-9AAA-4501FD111082}" ShortID="996813164">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3533B714-1297-404C-A4D8-ED9597A3E287}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EE6BA90F-2649-483D-B119-4C1D19437CC4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="outdoorheel2" ID="{62C168BE-67D7-4ECD-9AC2-E2317994B1EF}">
+											<Language>SFX</Language>
+											<AudioFile>outdoorheel2.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="804118964"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="outdoorheel2" ID="{62C168BE-67D7-4ECD-9AC2-E2317994B1EF}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="outdoorheel3" ID="{8E794B53-EBC4-400A-A939-0B56256D6ECF}" ShortID="834445672">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3533B714-1297-404C-A4D8-ED9597A3E287}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EE6BA90F-2649-483D-B119-4C1D19437CC4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="outdoorheel3" ID="{B6C705EB-B168-4ED1-BAA9-BC89F0E22F81}">
+											<Language>SFX</Language>
+											<AudioFile>outdoorheel3.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="963595871"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="outdoorheel3" ID="{B6C705EB-B168-4ED1-BAA9-BC89F0E22F81}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="outdoorheel4" ID="{76BCDC6B-82B0-4E5F-910E-891E954D30E5}" ShortID="112605994">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3533B714-1297-404C-A4D8-ED9597A3E287}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EE6BA90F-2649-483D-B119-4C1D19437CC4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="outdoorheel4" ID="{BFA49AF9-A6CF-45CC-9F6F-7539B57BEC6F}">
+											<Language>SFX</Language>
+											<AudioFile>outdoorheel4.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="688767600"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="outdoorheel4" ID="{BFA49AF9-A6CF-45CC-9F6F-7539B57BEC6F}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="outdoorheel5" ID="{5BA6AA8E-2163-439F-9FAA-73F8F013DCC1}" ShortID="712038524">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3533B714-1297-404C-A4D8-ED9597A3E287}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EE6BA90F-2649-483D-B119-4C1D19437CC4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="outdoorheel5" ID="{3524EB48-CEF0-43E5-8DA5-ECDDE0606551}">
+											<Language>SFX</Language>
+											<AudioFile>outdoorheel5.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="87754662"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="outdoorheel5" ID="{3524EB48-CEF0-43E5-8DA5-ECDDE0606551}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
 						</RandomSequenceContainer>
 						<RandomSequenceContainer Name="footstepsToe" ID="{B916CA9E-48ED-4819-A552-2E4855C5F60D}" ShortID="330725561">
+							<PropertyList>
+								<Property Name="Lowpass" Type="int16">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{5307CF57-E93F-4871-AC85-56372B8A6028}"/>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{EB3BBA93-ED5D-4B05-BD01-FED0404E97AF}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="126"/>
+													<Property Name="Min" Type="Real64" Value="-126"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3533B714-1297-404C-A4D8-ED9597A3E287}"/>
@@ -35,8 +197,124 @@
 									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EE6BA90F-2649-483D-B119-4C1D19437CC4}"/>
 								</Reference>
 							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="outdoortoe1" ID="{FF86F537-22B2-485B-93EC-93D53C048D42}" ShortID="957520494">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3533B714-1297-404C-A4D8-ED9597A3E287}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EE6BA90F-2649-483D-B119-4C1D19437CC4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="outdoortoe1" ID="{B1B7C55A-FAEF-4437-9EB2-99360C9890B1}">
+											<Language>SFX</Language>
+											<AudioFile>outdoortoe1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="26169689"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="outdoortoe1" ID="{B1B7C55A-FAEF-4437-9EB2-99360C9890B1}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="outdoortoe2" ID="{087D5F81-C5D3-4AF0-B13E-F81BCBE8116E}" ShortID="144165547">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3533B714-1297-404C-A4D8-ED9597A3E287}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EE6BA90F-2649-483D-B119-4C1D19437CC4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="outdoortoe2" ID="{DC740640-EEE2-4C63-9CEE-6876C40ADD80}">
+											<Language>SFX</Language>
+											<AudioFile>outdoortoe2.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="857416225"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="outdoortoe2" ID="{DC740640-EEE2-4C63-9CEE-6876C40ADD80}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="outdoortoe3" ID="{D1DFFDD2-50D7-43ED-B24E-B9956A9E12E6}" ShortID="1019644165">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3533B714-1297-404C-A4D8-ED9597A3E287}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EE6BA90F-2649-483D-B119-4C1D19437CC4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="outdoortoe3" ID="{86098885-7EAC-4515-85F2-BC6186A27DC9}">
+											<Language>SFX</Language>
+											<AudioFile>outdoortoe3.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="362864265"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="outdoortoe3" ID="{86098885-7EAC-4515-85F2-BC6186A27DC9}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="outdoortoe4" ID="{7549C055-CC8B-4D66-AE71-A41B1F42ABED}" ShortID="690046209">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3533B714-1297-404C-A4D8-ED9597A3E287}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EE6BA90F-2649-483D-B119-4C1D19437CC4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="outdoortoe4" ID="{ECDEB843-17A7-46C4-A3BF-3B5E813B2E02}">
+											<Language>SFX</Language>
+											<AudioFile>outdoortoe4.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="333502031"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="outdoortoe4" ID="{ECDEB843-17A7-46C4-A3BF-3B5E813B2E02}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="outdoortoe5" ID="{6158E49D-1B32-408E-BA12-2ED0485A69F4}" ShortID="15547737">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3533B714-1297-404C-A4D8-ED9597A3E287}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EE6BA90F-2649-483D-B119-4C1D19437CC4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="outdoortoe5" ID="{FC0DAF8C-DF6A-4E46-BA39-217AFCC64370}">
+											<Language>SFX</Language>
+											<AudioFile>outdoortoe5.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="208245045"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="outdoortoe5" ID="{FC0DAF8C-DF6A-4E46-BA39-217AFCC64370}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
 						</RandomSequenceContainer>
 					</ChildrenList>
+					<Playlist>
+						<ItemRef Name="footstepsHeel" ID="{BE422229-A8B2-4CE5-90E9-E4B927C04B0A}"/>
+						<ItemRef Name="footstepsToe" ID="{B916CA9E-48ED-4819-A552-2E4855C5F60D}"/>
+					</Playlist>
 				</RandomSequenceContainer>
 			</ChildrenList>
 		</WorkUnit>

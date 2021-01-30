@@ -1,0 +1,15 @@
+Event	ID	Name			Wwise Object Path	Notes
+	3182336282	footstepsEvent			\Default Work Unit\footstepsEvent	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	26169689	outdoortoe1	D:\Users\Aryo Nazaradeh\Misc\Work\Games\Lost and Found\GGJ2021\GlobalGameJam\GlobalGameJam_WwiseProject\.cache\Mac\SFX\outdoortoe1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\footsteps\footstepsToe\outdoortoe1		5356
+	87754662	outdoorheel5	D:\Users\Aryo Nazaradeh\Misc\Work\Games\Lost and Found\GGJ2021\GlobalGameJam\GlobalGameJam_WwiseProject\.cache\Mac\SFX\outdoorheel5_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\footsteps\footstepsHeel\outdoorheel5		7300
+	208245045	outdoortoe5	D:\Users\Aryo Nazaradeh\Misc\Work\Games\Lost and Found\GGJ2021\GlobalGameJam\GlobalGameJam_WwiseProject\.cache\Mac\SFX\outdoortoe5_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\footsteps\footstepsToe\outdoortoe5		8728
+	333502031	outdoortoe4	D:\Users\Aryo Nazaradeh\Misc\Work\Games\Lost and Found\GGJ2021\GlobalGameJam\GlobalGameJam_WwiseProject\.cache\Mac\SFX\outdoortoe4_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\footsteps\footstepsToe\outdoortoe4		5460
+	362864265	outdoortoe3	D:\Users\Aryo Nazaradeh\Misc\Work\Games\Lost and Found\GGJ2021\GlobalGameJam\GlobalGameJam_WwiseProject\.cache\Mac\SFX\outdoortoe3_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\footsteps\footstepsToe\outdoortoe3		4500
+	688767600	outdoorheel4	D:\Users\Aryo Nazaradeh\Misc\Work\Games\Lost and Found\GGJ2021\GlobalGameJam\GlobalGameJam_WwiseProject\.cache\Mac\SFX\outdoorheel4_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\footsteps\footstepsHeel\outdoorheel4		6732
+	804118964	outdoorheel2	D:\Users\Aryo Nazaradeh\Misc\Work\Games\Lost and Found\GGJ2021\GlobalGameJam\GlobalGameJam_WwiseProject\.cache\Mac\SFX\outdoorheel2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\footsteps\footstepsHeel\outdoorheel2		2612
+	857416225	outdoortoe2	D:\Users\Aryo Nazaradeh\Misc\Work\Games\Lost and Found\GGJ2021\GlobalGameJam\GlobalGameJam_WwiseProject\.cache\Mac\SFX\outdoortoe2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\footsteps\footstepsToe\outdoortoe2		6212
+	929586529	outdoorheel1	D:\Users\Aryo Nazaradeh\Misc\Work\Games\Lost and Found\GGJ2021\GlobalGameJam\GlobalGameJam_WwiseProject\.cache\Mac\SFX\outdoorheel1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\footsteps\footstepsHeel\outdoorheel1		688
+	963595871	outdoorheel3	D:\Users\Aryo Nazaradeh\Misc\Work\Games\Lost and Found\GGJ2021\GlobalGameJam\GlobalGameJam_WwiseProject\.cache\Mac\SFX\outdoorheel3_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\footsteps\footstepsHeel\outdoorheel3		2588
+
