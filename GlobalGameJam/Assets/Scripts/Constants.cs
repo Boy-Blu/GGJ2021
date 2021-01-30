@@ -6,5 +6,6 @@ public class RewiredMappings {
     public const string CAMERA_VERTICAL = "CameraVertical";
     public const string CAMERA_HORIZONTAL = "CameraHorizontal";
     public const string JUMP = "Jump";
-    public const string SLIDE = "Slide";
+    public const string CROUCH = "Slide";
+    public const string GRAB = "Grab";
 }

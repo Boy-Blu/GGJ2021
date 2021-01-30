@@ -121,6 +121,51 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!20 &3409605 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 6764023859129412331, guid: 3c6b70a293a00354d9b52773b0009e51,
+    type: 3}
+  m_PrefabInstance: {fileID: 6764023859664169696}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &22358779 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6764023859460869116, guid: 3c6b70a293a00354d9b52773b0009e51,
+    type: 3}
+  m_PrefabInstance: {fileID: 6764023859664169696}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &22358786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22358779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5f17da9045962844be512511869c1a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FloorCheckRadius: 0.4
+  bottomOffset: 1
+  WallCheckRadius: 0.5
+  frontOffset: 0.7
+  RoofCheckRadius: 0
+  upOffset: 0
+  LedgeGrabForwardPos: 1
+  LedgeGrabUpwardsPos: 3
+  LedgeGrabDistance: 2
+  FloorLayers:
+    serializedVersion: 2
+    m_Bits: 512
+  WallLayers:
+    serializedVersion: 2
+    m_Bits: 1024
+  RoofLayers:
+    serializedVersion: 2
+    m_Bits: 2048
+  LedgeGrabLayers:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &170355845
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,7 +236,7 @@ GameObject:
   - component: {fileID: 476889324}
   - component: {fileID: 476889323}
   - component: {fileID: 476889322}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -781,17 +826,17 @@ PrefabInstance:
     - target: {fileID: 6764023859460869058, guid: 3c6b70a293a00354d9b52773b0009e51,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.47
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6764023859460869058, guid: 3c6b70a293a00354d9b52773b0009e51,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.12
+      value: 1.23
       objectReference: {fileID: 0}
     - target: {fileID: 6764023859460869058, guid: 3c6b70a293a00354d9b52773b0009e51,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6764023859460869058, guid: 3c6b70a293a00354d9b52773b0009e51,
         type: 3}
@@ -837,6 +882,116 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764023859460869117, guid: 3c6b70a293a00354d9b52773b0009e51,
+        type: 3}
+      propertyPath: MaxSpeed
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764023859460869117, guid: 3c6b70a293a00354d9b52773b0009e51,
+        type: 3}
+      propertyPath: BackwardsSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764023859460869117, guid: 3c6b70a293a00354d9b52773b0009e51,
+        type: 3}
+      propertyPath: InAirControl
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764023859460869117, guid: 3c6b70a293a00354d9b52773b0009e51,
+        type: 3}
+      propertyPath: Acceleration
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764023859460869117, guid: 3c6b70a293a00354d9b52773b0009e51,
+        type: 3}
+      propertyPath: Decceleration
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764023859460869117, guid: 3c6b70a293a00354d9b52773b0009e51,
+        type: 3}
+      propertyPath: TurnSpeed
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764023859460869117, guid: 3c6b70a293a00354d9b52773b0009e51,
+        type: 3}
+      propertyPath: TurnSpeedInAir
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764023859460869117, guid: 3c6b70a293a00354d9b52773b0009e51,
+        type: 3}
+      propertyPath: TurnSpeedOnWalls
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764023859460869117, guid: 3c6b70a293a00354d9b52773b0009e51,
+        type: 3}
+      propertyPath: Head
+      value: 
+      objectReference: {fileID: 3409605}
+    - target: {fileID: 6764023859460869117, guid: 3c6b70a293a00354d9b52773b0009e51,
+        type: 3}
+      propertyPath: JumpHeight
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764023859460869117, guid: 3c6b70a293a00354d9b52773b0009e51,
+        type: 3}
+      propertyPath: SlideAmt
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764023859460869117, guid: 3c6b70a293a00354d9b52773b0009e51,
+        type: 3}
+      propertyPath: SlideSpeedLimit
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764023859460869117, guid: 3c6b70a293a00354d9b52773b0009e51,
+        type: 3}
+      propertyPath: SlideControl
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764023859460869117, guid: 3c6b70a293a00354d9b52773b0009e51,
+        type: 3}
+      propertyPath: PullUpTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764023859460869117, guid: 3c6b70a293a00354d9b52773b0009e51,
+        type: 3}
+      propertyPath: DirectionControl
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764023859460869117, guid: 3c6b70a293a00354d9b52773b0009e51,
+        type: 3}
+      propertyPath: LookUpSpeed
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764023859460869117, guid: 3c6b70a293a00354d9b52773b0009e51,
+        type: 3}
+      propertyPath: MaxLookAngle
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764023859460869117, guid: 3c6b70a293a00354d9b52773b0009e51,
+        type: 3}
+      propertyPath: MinLookAngle
+      value: -80
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764023859460869117, guid: 3c6b70a293a00354d9b52773b0009e51,
+        type: 3}
+      propertyPath: WallRunTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764023859460869117, guid: 3c6b70a293a00354d9b52773b0009e51,
+        type: 3}
+      propertyPath: TimeBeforeWallRun
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764023859460869117, guid: 3c6b70a293a00354d9b52773b0009e51,
+        type: 3}
+      propertyPath: WallRunUpwardsMovement
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764023859460869118, guid: 3c6b70a293a00354d9b52773b0009e51,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c6b70a293a00354d9b52773b0009e51, type: 3}

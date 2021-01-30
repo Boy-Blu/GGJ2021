@@ -2,126 +2,432 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Rewired;
-using Rewired.ControllerExtensions;
 
 public class PlayerController : MonoBehaviour
 {
+    public enum PlayerStates
+    {
+        Grounded,//on the ground
+        InAir, //in the air
+        OnWalls, //running on the walls
+        LedgeGrab, //pulling up a ledge
+    }
 
-    // rewired Requirements
+    private PlayerCollision Coli;
+    private Rigidbody Rigid;
+    private CapsuleCollider Cap;
+
+    [Header("Rewired")]
     [SerializeField] private int _playerId = 0;
     private Player _player;
 
-    // Movement Requirements
-    //camera stuff
-    private float _cameraX = 0f;
-    private float _cameraY = 0f;
+    [Header("Physics")]
+    public float MaxSpeed; //how fast we run forward
+    public float BackwardsSpeed; //how fast we run backwards
+    public float InAirControl; //how much control you have over your movement direction when in air
 
-    public float turnSpeed = 5f;
-    public float FOVSpeed = 0.75f;
-    public float MinFov = 0f;
-    public float MaxFov = 5f;
-    public float LookUpSpeed = 20f; //how fast we look up and down
-    private float YTurn = 0; //how much we have turned left and right
-    private float XTurn = 0; //how much we have turned Up or Down
+    private float ActSpeed; //how much speed is applied to the rigidbody
+    public float Acceleration; //how fast we build speed
+    public float Decceleration; //how fast we slow down
+    public float DirectionControl = 8; //how much control we have over changing direction
+    public PlayerStates CurrentState; //the current state the player is in
+    private float InAirTimer; //how long we are in the air for (this is for use when wall running or falling off the ground
+    private float OnGroundTimer;
+    private float AdjustmentAmt; //the amount added to our player acceleration, this is used for adjusting to new speeds such as when we slide
+
+
+    [Header("Turning")]
+    public float TurnSpeed; //how fast we turn when on the ground
+    public float TurnSpeedInAir; //how fast we turn when in air
+    public float TurnSpeedOnWalls; //how fast we turn when on the walls
+    public float LookUpSpeed; //how fast we look up and down
+    public Camera Head; //what will function as our players head to tilt up and down (this is a pivot point in our model that the cameras are children of
+    private float YTurn; //how much we have turned left and right
+    private float XTurn; //how much we have turned Up or Down
     public float MaxLookAngle = 65; //how much we can look up
     public float MinLookAngle = -30; //how much we can look down
-    [SerializeField] private Camera camera;
 
+    [Header("Jumping")]
+    public float JumpHeight; //how high we jump
 
+    [Header("Wall Runs")]
+    public float WallRunTime = 2f; //how long we can run on walls
+    private float ActWallRunTime = 0; //how long we are actually on a wall
+    public float TimeBeforeWallRun = 0.2f; //how long we have to be in the air before we can wallrun
+    public float WallRunUpwardsMovement = 2f; //how much we move up a wall when running on it (make this 0 to just slightly move down a wall we run on
+    public float WallRunSpeedAcceleration = 2f; //how quickly we build speed to run up walls
 
+    [Header("Crouching")]
+    public float CrouchSpeed = 10; //how fast we move when crouching
+    public float CrouchHeight = 1.5f; //how tall our capsule will be when crouched
+    private float StandingHeight = 2f; //this is how tall our capsule is
+    private bool Crouch;
 
-    // Movment stuff
-    private float _moveFor = 0f;
-    private float _moveStrafe = 0f;
-    private float _maxSpeed = 20f;
-    private float _backSpeed = 5f;
-    private float ActSpeed = 0f;
+    [Header("Sliding")]
+    public float SlideAmt; //how far we slide when pressing crouch
+    public float SlideSpeedLimit; //how fast we have to be traveling before a crouch will trigger a slide
+    public float SlideControl; //how much we adjust to our slide speed and regain player control
 
-    private float _accel = 0.6f;
-    private float _decell = 5f;
+    [Header("WallGrabbing")]
+    public float PullUpTime; //the time it takes to pull onto a ledge
+    private float ActPullTm; //the actual time it takes to pull up a ledge
+    private Vector3 OrigPos; //the original Position before grabbing a ledge
+    private Vector3 LedgePos; //the ledge position to move to
 
-
-    private Rigidbody _rb;
-    private CapsuleCollider _capColl;
-    [SerializeField] private float _playerSpeed = 5f;
-
-
-    //Jumping handlers
-    [SerializeField] private float JUMP_FORCE = 10f;
-    private float yVelocity = 0f;
-    private bool _canJump = true;
-    private bool _jumped = false;
-    private float fallMultiplier = 1.5f;
-    private bool _bufferJump = false;
-    private float _bufferTimeLimit = 0.5f; // Change to 0.1f once it works
-    private float _coyoteTime = 0f;
-    private float _coyoteTimeLimit = 0.5f; // Change to 0.1f once it works
-
-    
+    [Header("FOV")]
+    public float MaxFov;
+    private float MinFov;
+    public float FOVSpeed; //how fast we must go before we reach max fov
 
     // Start is called before the first frame update
     void Start()
     {
-        // Set up everything
+
         _player = ReInput.players.GetPlayer (_playerId);
-        _rb = GetComponent<Rigidbody>();
-        _capColl= GetComponent<CapsuleCollider>();
-        
-        Physics.gravity = new Vector3 (0, -30.0F, 0);
-    }
+        Coli = GetComponent<PlayerCollision>();      
+        Rigid = GetComponent<Rigidbody>();
+        MinFov = Head.fieldOfView;
+        Cap = GetComponent<CapsuleCollider>();
+        StandingHeight = Cap.height;
 
-    // Update to handle during physics
-    void FixedUpdate()
-    {
-        float Del = Time.deltaTime;
-
-        //get our players rotation amount for turning
-
-
-        //have our player look up and down
-
-        //handle our fov
-        //
-
-        //get inputs
-        float horInput = _player.GetAxis(RewiredMappings.MOVE_HORIZONTAL);
-        float verInput = _player.GetAxis(RewiredMappings.MOVE_VERTICAL);
-        float CamX = _player.GetAxis(RewiredMappings.CAMERA_HORIZONTAL);
-        float CamY = _player.GetAxis(RewiredMappings.CAMERA_VERTICAL);
-        LookUpDown(CamY, Del);
-
-        
-        HandleFov(Del);
-        // Ground Movment stuff -> Expand to introduce many cases
-            //get magnituded of our inputs
-            float InputMagnitude = new Vector2(horInput, verInput).normalized.magnitude;
-            //get the amount of speed, based on if we press forwards or backwards
-            float TargetSpd = Mathf.Lerp(_backSpeed, _maxSpeed, verInput); //using the vertical input as a lerp from if forward is being pressed
-
-            LerpSpeed(InputMagnitude, Del, TargetSpd);
-
-            MovePlayer(horInput, verInput, Del);
-            TurnPlayer(CamX, Del, turnSpeed);
+        AdjustmentAmt = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Update movments in Update, Apply in FixedUpdate
-        _moveStrafe = _player.GetAxis (RewiredMappings.MOVE_HORIZONTAL);
-        _moveFor = _player.GetAxis (RewiredMappings.MOVE_VERTICAL);
+        float XMove = _player.GetAxis (RewiredMappings.MOVE_HORIZONTAL);
+        float YMove = _player.GetAxis (RewiredMappings.MOVE_VERTICAL);
+
+        if (CurrentState == PlayerStates.Grounded)
+        {
+            //if we press jump
+            if (_player.GetButtonDown (RewiredMappings.JUMP))
+            {
+                //jump upwards
+                JumpUp();
+            }
+        }
+        else if (CurrentState == PlayerStates.InAir)
+        {
+            //check for ledge grabs
+            if (_player.GetButtonDown (RewiredMappings.GRAB))
+            {
+                Vector3 LedgePos = Coli.CheckLedges();
+                if (LedgePos != Vector3.zero)
+                {
+                    LedgeGrab(LedgePos);
+                }
+            }
+
+            //Check if there is a wall to run on
+            bool Wall = CheckWalls(XMove, YMove);
+
+            //we are on the wall
+            if (Wall)
+            {
+                if (InAirTimer > TimeBeforeWallRun)
+                {
+                    SetOnWall();
+                    return;
+                }
+            }
+
+            //check for the ground 
+            bool Grounded = Coli.CheckFloor(-transform.up);
+
+            //we are on the ground (and have been in the air for a short time, to prevent multiple jump glitched
+            if (Grounded && InAirTimer > 0.25f)
+            {
+                SetOnGround();
+            }
+        }
+        else if (CurrentState == PlayerStates.OnWalls)
+        {
+            //check for ledge grabs
+            if (_player.GetButtonDown (RewiredMappings.GRAB))
+            {
+                Vector3 LedgePos = Coli.CheckLedges();
+
+                if (LedgePos != Vector3.zero)
+                {
+                    LedgeGrab(LedgePos);
+                }
+            }
+
+            //Check if there is a wall to run on
+            bool Wall = CheckWalls(XMove, YMove);
+
+            //we are no longer on the wall, fall off it
+            if (!Wall)
+            {
+                SetInAir();
+                return;
+            }
+
+            //check for the ground 
+            bool Grounded = Coli.CheckFloor(-transform.up);
+
+            //we are on the ground
+            if (Grounded)
+            {
+                SetOnGround();
+            }
+        }
+        else if(CurrentState == PlayerStates.LedgeGrab)
+        {
+            //clamp our rigid velocity to nothing
+            Rigid.velocity = Vector3.zero;
+        }
+
     }
 
+
+    private void FixedUpdate()
+    {
+        float Del = Time.deltaTime;
+
+        //get our players rotation amount for turning
+        float CamX = _player.GetAxis(RewiredMappings.CAMERA_HORIZONTAL);
+        float CamY = _player.GetAxis(RewiredMappings.CAMERA_VERTICAL);
+
+        //have our player look up and down
+        LookUpDown(CamY, Del);
+
+        //handle our fov
+        HandleFov(Del);
+
+        //get inputs
+        float horInput = _player.GetAxis(RewiredMappings.MOVE_HORIZONTAL);
+        float verInput = _player.GetAxis(RewiredMappings.MOVE_VERTICAL);
+
+        if (CurrentState == PlayerStates.Grounded)
+        {
+            //tick our ground timer
+            if (OnGroundTimer < 10)
+                OnGroundTimer += Del;
+           
+
+            //get magnituded of our inputs
+            float InputMagnitude = new Vector2(horInput, verInput).normalized.magnitude;
+            //get the amount of speed, based on if we press forwards or backwards
+            float TargetSpd = Mathf.Lerp(BackwardsSpeed, MaxSpeed, verInput); //using the vertical input as a lerp from if forward is being pressed
+            //if we are crouching our target speed is our crouch speed
+            if (Crouch)
+                TargetSpd = CrouchSpeed;
+
+            LerpSpeed(InputMagnitude, Del, TargetSpd);
+
+            MovePlayer(horInput, verInput, Del);
+            TurnPlayer(CamX, Del, TurnSpeed);
+
+            //check for crouching 
+            if(_player.GetButtonDown (RewiredMappings.CROUCH))
+            { 
+                //start crouching
+                if(!Crouch)
+                {
+                    StartCrouch();
+                }
+            }
+            else
+            {
+                //stand up
+                bool check = Coli.CheckRoof(transform.up);
+                if (!check)
+                {
+                    StopCrouching();
+                }
+            }
+
+            //add to our player adjustment
+            if (AdjustmentAmt < 1)
+                AdjustmentAmt += Del * SlideControl;
+            else
+                AdjustmentAmt = 1;
+
+            //check for the ground 
+            bool Grounded = Coli.CheckFloor(-transform.up);
+
+            //we are in the air
+            if (!Grounded)
+            {
+                if (InAirTimer < 0.2f)
+                    InAirTimer += Del;
+                else
+                {
+                    SetInAir();
+                    return;
+                }
+            }
+            else
+            {
+                //we are on the ground to remove any increase in the air timer
+                InAirTimer = 0;
+            }
+        }
+        else if(CurrentState == PlayerStates.InAir)
+        {
+            //tick our Air timer
+            if (InAirTimer < 10)
+                InAirTimer += Del;
+
+            MoveInAir(horInput, verInput ,Del);
+
+            //turn our player with the in air modifier
+            TurnPlayer(CamX, Del, TurnSpeedInAir);
+        }
+        else if (CurrentState == PlayerStates.OnWalls)
+        {
+            //tick our wall run timer
+            ActWallRunTime += Del;
+            Debug.Log(ActWallRunTime);
+            //turn our player with the in air modifier
+            TurnPlayer(CamX, Del, TurnSpeedOnWalls);
+
+            //move our player when on a wall
+            WallMove(verInput, Del);
+        }
+        else if(CurrentState == PlayerStates.LedgeGrab)
+        {
+            //tick ledge grab time 
+            ActPullTm += Del;
+
+            //pull up the ledge
+            float PullUpLerp = ActPullTm / PullUpTime;
+
+            if (PullUpLerp < 0.5)
+            {              
+                //lerp our player upwards to the leges y position
+                float LAmt = PullUpLerp * 2;
+                transform.position = Vector3.Lerp(OrigPos, new Vector3(OrigPos.x, LedgePos.y, OrigPos.z), LAmt);               
+            }
+            else if(PullUpLerp <= 1)
+            {
+                //set new pull up position
+                if (OrigPos.y != LedgePos.y)
+                    OrigPos = new Vector3(transform.position.x, LedgePos.y, transform.position.z);
+
+
+                //move to the ledge position
+                float LAmt = (PullUpLerp - 0.5f) * 2;
+                transform.position = Vector3.Lerp(OrigPos, LedgePos, PullUpLerp);
+            }
+            else
+            {
+                //we have finished pulling up!
+                SetOnGround();
+            }
+        }
+    }
+
+
+    //lerp our current speed to our set max speed, by how much we are pressing the horizontal and vertical input
     void LerpSpeed(float InputMag, float D, float TargetSpeed)
     {
         //multiply our speed by our input amount
         float LerpAmt = TargetSpeed * InputMag;
         //get our acceleration (if we should speed up or slow down
-        float Accel = _accel;
+        float Accel = Acceleration;
         if (InputMag == 0)
-            Accel = _decell;
+            Accel = Decceleration;
         //lerp by a factor of our acceleration
         ActSpeed = Mathf.Lerp(ActSpeed, LerpAmt, D * Accel);
+    }
+
+    //when in the air or on a wall, we set our action speed to the velocity magnitude, this is so that when we reach the ground again, our speed will carry over our momentum
+    void SetSpeedToVelocity()
+    {
+        float Mag = new Vector2(Rigid.velocity.x, Rigid.velocity.z).magnitude;
+        ActSpeed = Mag;
+    }
+
+    bool CheckWalls(float X, float Y)
+    {
+        if (X == 0 && Y == 0) //if no direction input we are not wall running
+            return false;
+
+        if (ActWallRunTime >= WallRunTime) //if our wall run timer is more than the amount we can run on walls for, we cannot wall run
+            return false;
+
+        //check the collision direction for any walls
+        float ClampedY = Mathf.Clamp(Y, 0, 1);
+        Vector3 Dir = transform.forward * ClampedY + transform.right * X;
+
+        bool WallCol = Coli.CheckWall(Dir);
+
+        return WallCol;
+    }
+
+    void SetInAir()
+    {
+        StopCrouching(); //cannot crouch in air
+
+        OnGroundTimer = 0; //remove the on ground timer
+        CurrentState = PlayerStates.InAir;
+    }
+
+    void SetOnGround()
+    {
+        //set our current speed to our velocity
+        SetSpeedToVelocity();
+
+        ActWallRunTime = 0; //we are on the ground again, our wall run timer is reset
+        InAirTimer = 0; //remove the in air timer
+        CurrentState = PlayerStates.Grounded;
+    }
+
+    void SetOnWall()
+    {
+        OnGroundTimer = 0; //remove the on ground timer
+        InAirTimer = 0; //remove the in air timer
+        CurrentState = PlayerStates.OnWalls;
+    }
+
+    void LedgeGrab(Vector3 Ledge)
+    {
+        //set our ledge position
+        LedgePos = Ledge;
+        OrigPos = transform.position;
+        //reset ledge grab time
+        ActPullTm = 0;
+        //remove speed and velocity
+        Rigid.velocity = Vector3.zero;
+        ActSpeed = 0;
+        //start ledge grabs
+        CurrentState = PlayerStates.LedgeGrab;
+    }
+
+    void StartCrouch()
+    {
+        Crouch = true;
+        Cap.height = CrouchHeight;
+
+        if (ActSpeed > SlideSpeedLimit)
+            SlideSelf();
+    }
+
+    void StopCrouching()
+    {
+        Crouch = false;
+        Cap.height = StandingHeight;
+    }
+
+    void TurnPlayer(float Hor, float D, float turn)
+    {
+        //add our inputs to our turn value
+        YTurn += (Hor * D) * turn; 
+        //turn our character
+        transform.rotation = Quaternion.Euler(0, YTurn, 0);
+    }
+
+    void LookUpDown(float Ver, float D)
+    {
+        //add our inputs to our look angle
+        XTurn -= (Ver * D) * LookUpSpeed;
+        XTurn = Mathf.Clamp(XTurn, MinLookAngle, MaxLookAngle);
+        //look up and down
+        Head.transform.localRotation = Quaternion.Euler(XTurn, 0, 0);
     }
 
     void MovePlayer(float Hor, float Ver, float D)
@@ -131,44 +437,94 @@ public class PlayerController : MonoBehaviour
         MovementDirection = MovementDirection.normalized;
         //if we are no longer pressing and input, carryon moving in the last direction we were set to move in
         if (Hor == 0 && Ver == 0)
-            MovementDirection = _rb.velocity.normalized;
+            MovementDirection = Rigid.velocity.normalized;
 
         MovementDirection = MovementDirection * ActSpeed;
 
         //apply Gravity and Y velocity to the movement direction 
-        MovementDirection.y = _rb.velocity.y;
+        MovementDirection.y = Rigid.velocity.y;
 
         //apply adjustment to acceleration
-        float Acel = 8f;
-        Vector3 LerpVelocity = Vector3.Lerp(_rb.velocity, MovementDirection, Acel * D);
-        _rb.velocity = LerpVelocity;          
+        float Acel = DirectionControl * AdjustmentAmt;
+        Vector3 LerpVelocity = Vector3.Lerp(Rigid.velocity, MovementDirection, Acel * D);
+        Rigid.velocity = LerpVelocity;          
     }
-    
-    void TurnPlayer(float Hor, float D, float turn)
+
+    void MoveInAir(float Hor, float Ver, float D)
     {
-        //add our inputs to our turn value
-        YTurn += (Hor * D) * turn; 
-        //turn our character
-        transform.rotation = Quaternion.Euler(0, YTurn, 0);
+        //find the direction to move in, based on the direction inputs
+        Vector3 MovementDirection = (transform.forward * Ver) + (transform.right * Hor);
+        MovementDirection = MovementDirection.normalized;
+        //if we are no longer pressing and input, carryon moving in the last direction we were set to move in
+        if (Hor == 0 && Ver == 0)
+            MovementDirection = Rigid.velocity.normalized;
+
+        MovementDirection = MovementDirection * ActSpeed;
+
+        //apply Gravity and Y velocity to the movement direction 
+        MovementDirection.y = Rigid.velocity.y;
+
+        //lerp to our movement direction based on how much airal control we have
+        Vector3 LerpVelocity = Vector3.Lerp(Rigid.velocity, MovementDirection, InAirControl * D);
+        Rigid.velocity = LerpVelocity;
+
     }
-    
+
+    void WallMove(float Ver, float D)
+    {
+        //get the direction to run up this wall if we press forward (keep in mind this only works if the wall is infront or to the side of the player as we run along on, on walls to our immediate right or left we slide down
+        Vector3 MovementDirection = transform.up * Ver;
+        MovementDirection = MovementDirection * WallRunUpwardsMovement;
+
+        //our x z velocity are our momentum applied to our forward direction
+        MovementDirection += transform.forward * ActSpeed;
+
+        Vector3 LerpVelocity = Vector3.Lerp(Rigid.velocity, MovementDirection, WallRunSpeedAcceleration * D);
+        Rigid.velocity = LerpVelocity;
+    }
+
+    void JumpUp()
+    {
+        //only jump if we are still on the ground
+        if (CurrentState == PlayerStates.Grounded)
+        {
+            //reduce our velocity on the y axis so our jump force can be added
+            Vector3 VelAmt = Rigid.velocity;
+            VelAmt.y = 0;
+            Rigid.velocity = VelAmt;
+            //add our jump force
+            Rigid.AddForce(transform.up * JumpHeight, ForceMode.Impulse);
+            //we are now in the air
+            SetInAir();
+        }
+    }
+
+    //increase our fov at high speed and reduce it at low speed
     void HandleFov(float D)
     {
         //get our velocity magniture
-        float mag = new Vector2(_rb.velocity.x, _rb.velocity.z).magnitude;
+        float mag = new Vector2(Rigid.velocity.x, Rigid.velocity.z).magnitude;
         //get appropritate fov 
         float LerpAmt = mag / FOVSpeed;
         float FieldView = Mathf.Lerp(MinFov, MaxFov, LerpAmt);
         //ease into this fov
-        camera.fieldOfView = Mathf.Lerp(camera.fieldOfView, FieldView, 4 * D);
+        Head.fieldOfView = Mathf.Lerp(Head.fieldOfView, FieldView, 4 * D);
     }
 
-    void LookUpDown(float Ver, float D)
+    //slide our character forwards
+    void SlideSelf()
     {
-        //add our inputs to our look angle
-        XTurn -= (Ver * D) * LookUpSpeed;
-        XTurn = Mathf.Clamp(XTurn, MinLookAngle, MaxLookAngle);
-        //look up and down
-        camera.transform.localRotation = Quaternion.Euler(XTurn, 0, 0);
+        //reduce our speed
+        ActSpeed = SlideSpeedLimit;
+
+        //remove any control from player 
+        AdjustmentAmt = 0;
+
+        //find direction
+        Vector3 Dir = Rigid.velocity.normalized;
+        Dir.y = 0;
+
+        //slide in direction
+        Rigid.AddForce(transform.forward * SlideAmt, ForceMode.Impulse);
     }
 }
