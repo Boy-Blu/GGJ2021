@@ -81,6 +81,12 @@ public class PlayerController : MonoBehaviour
     private float MinFov;
     public float FOVSpeed; //how fast we must go before we reach max fov
 
+    [Header("Audio")]
+    public float footStepTime = 0.33f;
+    private float footStepTimer = 0f;
+
+
+    [Header("Other")]
     //Word information
     public string currentWord;
 
@@ -120,7 +126,6 @@ public class PlayerController : MonoBehaviour
             //check for ledge grabs
             if (_player.GetButton (RewiredMappings.GRAB))
             {
-                Debug.LogWarning("AttempGrabed Ledge!");
                 Vector3 LedgePos = Coli.CheckLedges();
                 if (LedgePos != Vector3.zero)
                 {
@@ -187,7 +192,7 @@ public class PlayerController : MonoBehaviour
             //clamp our rigid velocity to nothing
             Rigid.velocity = Vector3.zero;
         }
-
+        playFootStepAudio();
     }
 
 
@@ -284,6 +289,7 @@ public class PlayerController : MonoBehaviour
 
             //turn our player with the in air modifier
             TurnPlayer(CamX, Del, TurnSpeedInAir);
+            footStepTimer = 0f;
         }
         else if (CurrentState == PlayerStates.OnWalls)
         {
@@ -549,5 +555,17 @@ public class PlayerController : MonoBehaviour
 
         //slide in direction
         Rigid.AddForce(transform.forward * SlideAmt, ForceMode.Impulse);
+    }
+
+    private void playFootStepAudio(){
+        if(CurrentState == PlayerStates.Grounded){
+            // Run case (As Sample)
+            if (footStepTimer < 0 && (Math.Abs(Rigid.velocity.x) > 0.1f || Math.Abs(Rigid.velocity.z) > 0.1f)){
+                AkSoundEngine.PostEvent("footstepsEvent", gameObject);
+                footStepTimer = footStepTime;
+            }else{
+                footStepTimer -= Time.deltaTime;
+            }
+        }
     }
 }

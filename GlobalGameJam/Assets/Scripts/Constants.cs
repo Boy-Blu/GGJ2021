@@ -13,5 +13,4 @@ public class RewiredMappings {
 public class LevelNames {
     public const string MAIN_MENU = "MainMenu";
     public const string INTRO = "LEVEL1";
-
 }

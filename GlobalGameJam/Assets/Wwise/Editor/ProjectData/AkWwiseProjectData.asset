@@ -13,24 +13,24 @@ MonoBehaviour:
   m_Name: AkWwiseProjectData
   m_EditorClassIdentifier: 
   AcousticTextureWwu:
-  - PhysicalPath: Virtual Acoustics/Default Work Unit.wwu
+  - PhysicalPath: Virtual Acoustics\Default Work Unit.wwu
     PathAndIcons:
     - ElementName: Default Work Unit
       ObjectType: 12
     ParentPath: Default Work Unit
     guid: 250a04176dcbaf4cae3312101500e940
     GuidInternal: 
-    m_lastTime: -8585896378554775808
+    m_lastTime: -8585898008709989768
     List: []
   AuxBusWwu:
-  - PhysicalPath: Master-Mixer Hierarchy/Default Work Unit.wwu
+  - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
     PathAndIcons:
     - ElementName: Default Work Unit
       ObjectType: 12
     ParentPath: Default Work Unit
     guid: 0fa96bee49263d48b1194c1d19437cc4
     GuidInternal: 
-    m_lastTime: -8585896378554775808
+    m_lastTime: -8585898008710019665
     List:
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
@@ -40,16 +40,16 @@ MonoBehaviour:
         ObjectType: 12
       - ElementName: Master Audio Bus
         ObjectType: 2
-      Path: Default Work Unit/Master Audio Bus
+      Path: Default Work Unit\Master Audio Bus
   BankWwu:
-  - PhysicalPath: SoundBanks/Default Work Unit.wwu
+  - PhysicalPath: SoundBanks\Default Work Unit.wwu
     PathAndIcons:
     - ElementName: Default Work Unit
       ObjectType: 12
     ParentPath: Default Work Unit
     guid: f057849da45e2348bbb7c6e3aca1d29c
     GuidInternal: 
-    m_lastTime: -8585895710144775808
+    m_lastTime: -8585896348544478718
     List:
     - name: Main
       guid: 0fa568d12714714fafd30df306cd0248
@@ -59,16 +59,16 @@ MonoBehaviour:
         ObjectType: 12
       - ElementName: Main
         ObjectType: 7
-      Path: Default Work Unit/Main
+      Path: Default Work Unit\Main
   EventWwu:
-  - PhysicalPath: Events/Default Work Unit.wwu
+  - PhysicalPath: Events\Default Work Unit.wwu
     PathAndIcons:
     - ElementName: Default Work Unit
       ObjectType: 12
     ParentPath: Default Work Unit
     guid: 1ea5f454067d8944b8fc5fc50454983a
     GuidInternal: 
-    m_lastTime: -8585896378554775808
+    m_lastTime: -8585897232718567079
     List:
     - name: footstepsEvent
       guid: 8d95f2d105943f4498a119f846120e49
@@ -78,49 +78,49 @@ MonoBehaviour:
         ObjectType: 12
       - ElementName: footstepsEvent
         ObjectType: 3
-      Path: Default Work Unit/footstepsEvent
+      Path: Default Work Unit\footstepsEvent
       maxAttenuation: 0
       maxDuration: 0.096941
       minDuration: 0.026671
   RtpcWwu:
-  - PhysicalPath: Game Parameters/Default Work Unit.wwu
+  - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:
     - ElementName: Default Work Unit
       ObjectType: 12
     ParentPath: Default Work Unit
     guid: a2f2b22685077449933b653cc16b8778
     GuidInternal: 
-    m_lastTime: -8585896378554775808
+    m_lastTime: -8585898008710049743
     List: []
   StateWwu:
-  - PhysicalPath: States/Default Work Unit.wwu
+  - PhysicalPath: States\Default Work Unit.wwu
     PathAndIcons:
     - ElementName: Default Work Unit
       ObjectType: 12
     ParentPath: Default Work Unit
     guid: 0258effe4a79674e8d1cf02191091c63
     GuidInternal: 
-    m_lastTime: -8585896378554775808
+    m_lastTime: -8585898008709999777
     List: []
   SwitchWwu:
-  - PhysicalPath: Switches/Default Work Unit.wwu
+  - PhysicalPath: Switches\Default Work Unit.wwu
     PathAndIcons:
     - ElementName: Default Work Unit
       ObjectType: 12
     ParentPath: Default Work Unit
     guid: 610a6aab5c2c5a40a3aeb539a1f77c90
     GuidInternal: 
-    m_lastTime: -8585896378554775808
+    m_lastTime: -8585898008709989768
     List: []
   TriggerWwu:
-  - PhysicalPath: Triggers/Default Work Unit.wwu
+  - PhysicalPath: Triggers\Default Work Unit.wwu
     PathAndIcons:
     - ElementName: Default Work Unit
       ObjectType: 12
     ParentPath: Default Work Unit
     guid: c043c6145c6f354fa2b0b93165fb68c7
     GuidInternal: 
-    m_lastTime: -8585896378554775808
+    m_lastTime: -8585898008709989768
     List: []
   ExpandedItems: []
   autoPopulateEnabled: 1
