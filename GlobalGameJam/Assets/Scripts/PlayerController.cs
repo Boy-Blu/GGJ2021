@@ -340,6 +340,7 @@ public class PlayerController : MonoBehaviour
             //Debug.Log(collision.collider.GetComponent<TMPro>().text); 
             OnPickupWord?.Invoke();
             OnPickupWord = null;
+            GameManager.Instance.LoadLevel(word);
         }
     }
 
