@@ -6,39 +6,24 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: c3969ab58983e5b409cd26b0f40e82d7
+  - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: 3a2fd4bd0e5ffd44c99a3982433f9570
   - enabled: 1
-    path: Assets/Scenes/LoadingTransition.unity
-    guid: c6fa067ef4d3d6d40a90f4ab348a1532
-  - enabled: 1
-    path: Assets/Scenes/mainGame.unity
-    guid: 69e18e091032a1d44ac6b84eb640df75
+    path: Assets/Scenes/level_chris.unity
+    guid: f540b337c993943a4b0a71a9d6530da1
   - enabled: 1
     path: Assets/Scenes/mainGame_christa.unity
     guid: 9cb84f8a55e750a44a91d383bd5a95d7
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
-    guid: c3969ab58983e5b409cd26b0f40e82d7
-  - enabled: 1
-    path: Assets/Scenes/Player Test Ground 2.unity
-    guid: 3f8383c490746004bb5e9812361bda1e
-  - enabled: 1
-    path: Assets/Scenes/Player Test Ground.unity
-    guid: 5cc68643512fad84b9f566d0b7ec2322
-  - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: f4dbf242ec8c913479a64ae0b2bfcc04
-  - enabled: 1
-    path: Assets/Scenes/Player Test Ground 3.unity
-    guid: 8aab9d8b7738f44439f50fe900221b81
-  - enabled: 1
-    path: Assets/Scenes/ending_bad.unity
-    guid: 4e515addf7ec6c144865b84e8270f04a
-  - enabled: 1
-    path: Assets/Scenes/ending_good.unity
-    guid: 1abc660435e94374d8198b7b5111c8db
-  - enabled: 1
     path: Assets/Scenes/level_omri.unity
     guid: 51bcd7913c782654988f5e6b951fcd99
+  - enabled: 1
+    path: Assets/Scenes/Level2.unity
+    guid: f5b9935e2a0e8fe4c8201785a659e3a9
+  - enabled: 1
+    path: Assets/Scenes/LoadingTransition.unity
+    guid: c6fa067ef4d3d6d40a90f4ab348a1532
   m_configObjects: {}
