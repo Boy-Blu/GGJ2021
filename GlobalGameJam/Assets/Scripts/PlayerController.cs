@@ -97,6 +97,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         CanMove = true;
         _player = ReInput.players.GetPlayer (_playerId);
         Coli = GetComponent<PlayerCollision>();      

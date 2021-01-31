@@ -7,7 +7,12 @@ public class MainMenuScript : MonoBehaviour
 {
     public void StartGame(){
         SceneManager.LoadScene(LevelNames.INTRO);// Need scene name here
-    } 
+    }
+
+    private void Awake()
+    {
+        Cursor.lockState = CursorLockMode.None;
+    }
 
     public void Quit()
     {
