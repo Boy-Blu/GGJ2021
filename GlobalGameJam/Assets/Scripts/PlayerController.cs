@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Rewired;
-using TMPro; 
+using TMPro;
+using System;
 
 public class PlayerController : MonoBehaviour
 {
@@ -81,7 +82,9 @@ public class PlayerController : MonoBehaviour
     public float FOVSpeed; //how fast we must go before we reach max fov
 
     //Word information
-    public string currentWord; 
+    public string currentWord;
+
+    public static Action OnPickupWord;
 
     // Start is called before the first frame update
     void Start()
@@ -326,15 +329,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider collider)
     {
-        if (collision.collider.tag == "Word")
+        if (collider.tag == "Word")
         {
-            currentWord = collision.collider.gameObject.gameObject.name; 
-            collision.collider.gameObject.gameObject.SetActive(false);
+            var word = collider.GetComponent<Word>();
+            currentWord = word.WordName;
             Debug.Log("Collided!");
             Debug.Log(currentWord);
             //Debug.Log(collision.collider.GetComponent<TMPro>().text); 
+            OnPickupWord?.Invoke();
+            OnPickupWord = null;
         }
     }
 
