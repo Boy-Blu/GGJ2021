@@ -212,19 +212,19 @@ MonoBehaviour:
   _playerId: 0
   MaxSpeed: 12
   BackwardsSpeed: 6
-  InAirControl: 0.05
-  Acceleration: 1
-  Decceleration: 5
+  InAirControl: 0.5
+  Acceleration: 100
+  Decceleration: 98
   DirectionControl: 6
   CurrentState: 0
-  TurnSpeed: 60
-  TurnSpeedInAir: 40
-  TurnSpeedOnWalls: 30
-  LookUpSpeed: 45
+  TurnSpeed: 40
+  TurnSpeedInAir: 30
+  TurnSpeedOnWalls: 20
+  LookUpSpeed: 30
   Head: {fileID: 8092914753510646887}
   MaxLookAngle: 80
   MinLookAngle: -80
-  JumpHeight: 8
+  JumpHeight: 6
   WallRunTime: 2
   TimeBeforeWallRun: 2
   WallRunUpwardsMovement: 4
@@ -235,8 +235,9 @@ MonoBehaviour:
   SlideSpeedLimit: 6
   SlideControl: 2
   PullUpTime: 0.5
-  MaxFov: 90
+  MaxFov: 70
   FOVSpeed: 20
+  currentWord: 
 --- !u!54 &8092914753976354163
 Rigidbody:
   m_ObjectHideFlags: 0
