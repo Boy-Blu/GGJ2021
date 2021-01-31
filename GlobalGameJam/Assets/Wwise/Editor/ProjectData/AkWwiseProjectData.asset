@@ -68,7 +68,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 1ea5f454067d8944b8fc5fc50454983a
     GuidInternal: 
-    m_lastTime: -8585895750580467322
+    m_lastTime: -8585894779261258037
     List:
     - name: footstepsEvent
       guid: 8d95f2d105943f4498a119f846120e49
@@ -82,6 +82,30 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0.096941
       minDuration: 0.026671
+    - name: incoming
+      guid: 01e45bee650b7f41bfb16bc839c6a669
+      id: 3052979981
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: incoming
+        ObjectType: 3
+      Path: Default Work Unit\incoming
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: outgoing
+      guid: 34a77f7a20f0b741b7aaf0876b3f1b42
+      id: 882203003
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: outgoing
+        ObjectType: 3
+      Path: Default Work Unit\outgoing
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:
