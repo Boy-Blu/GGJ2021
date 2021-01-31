@@ -33,6 +33,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Player Test Ground 3.unity
     guid: 8aab9d8b7738f44439f50fe900221b81
   - enabled: 1
+    path: Assets/Scenes/ending_bad.unity
+    guid: 4e515addf7ec6c144865b84e8270f04a
+  - enabled: 1
+    path: Assets/Scenes/ending_good.unity
+    guid: 1abc660435e94374d8198b7b5111c8db
+  - enabled: 1
     path: Assets/Scenes/level_omri.unity
     guid: 51bcd7913c782654988f5e6b951fcd99
   m_configObjects: {}
