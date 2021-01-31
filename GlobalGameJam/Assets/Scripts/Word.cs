@@ -43,6 +43,6 @@ public class Word : MonoBehaviour
 
     void DestroySelf()
     {
-        Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
     }
 }

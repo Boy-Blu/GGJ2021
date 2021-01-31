@@ -3059,7 +3059,7 @@ PrefabInstance:
     - target: {fileID: 2632482282244494099, guid: db9e8df2d6faeff468bbf8acc87107d9,
         type: 3}
       propertyPath: CompleteResponseText
-      value: I feel pretty good.
+      value: I feel good.
       objectReference: {fileID: 0}
     - target: {fileID: 2632482282244494102, guid: db9e8df2d6faeff468bbf8acc87107d9,
         type: 3}
