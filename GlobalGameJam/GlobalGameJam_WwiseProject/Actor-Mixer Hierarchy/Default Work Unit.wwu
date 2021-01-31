@@ -316,6 +316,50 @@
 						<ItemRef Name="footstepsToe" ID="{B916CA9E-48ED-4819-A552-2E4855C5F60D}"/>
 					</Playlist>
 				</RandomSequenceContainer>
+				<Sound Name="incoming" ID="{C2DA1012-4ADF-46ED-8C2E-B60F4ABC6077}" ShortID="472825051">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3533B714-1297-404C-A4D8-ED9597A3E287}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EE6BA90F-2649-483D-B119-4C1D19437CC4}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="incoming" ID="{3AE80A75-EC49-41E2-9D12-25C165F78994}">
+							<Language>SFX</Language>
+							<AudioFile>incoming.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="4000196"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="incoming" ID="{3AE80A75-EC49-41E2-9D12-25C165F78994}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="send" ID="{22F45636-A159-4649-B6CB-E7D6074BFE12}" ShortID="439783184">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3533B714-1297-404C-A4D8-ED9597A3E287}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EE6BA90F-2649-483D-B119-4C1D19437CC4}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="send" ID="{9C508EB1-963F-4EBE-846C-54BF87032D00}">
+							<Language>SFX</Language>
+							<AudioFile>send.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="593701591"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="send" ID="{9C508EB1-963F-4EBE-846C-54BF87032D00}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>
