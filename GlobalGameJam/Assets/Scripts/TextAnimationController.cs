@@ -19,4 +19,12 @@ public class TextAnimationController : MonoBehaviour
     {
         PlayerController.CanMove = false;
     }
+
+    public void SendMsgSound(){
+        AkSoundEngine.PostEvent("outgoing", gameObject);
+    }
+
+    public void ReceiveMsgSound(){
+        AkSoundEngine.PostEvent("incoming", gameObject);
+    }
 }

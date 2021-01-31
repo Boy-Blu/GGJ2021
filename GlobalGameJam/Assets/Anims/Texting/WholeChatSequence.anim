@@ -247,6 +247,20 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 4.133333
+    functionName: ReceiveMsgSound
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 9.4
+    functionName: SendMsgSound
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 14.016666
     functionName: FinishedAnimating
     data: 
