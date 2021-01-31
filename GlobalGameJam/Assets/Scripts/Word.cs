@@ -21,6 +21,9 @@ public class Word : MonoBehaviour
 
     public TextMeshPro Text;
 
+    [TextArea]
+    public string CompleteResponseText;
+
     void Awake()
     {
         Text.text = WordName;
