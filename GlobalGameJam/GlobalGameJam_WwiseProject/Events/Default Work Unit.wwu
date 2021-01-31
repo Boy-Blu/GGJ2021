@@ -14,6 +14,28 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="incoming" ID="{EE5BE401-0B65-417F-BFB1-6BC839C6A669}">
+					<ChildrenList>
+						<Action Name="" ID="{4AB94ADA-204A-496B-882A-7725560F3AB0}" ShortID="1023663029">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="incoming" ID="{C2DA1012-4ADF-46ED-8C2E-B60F4ABC6077}" WorkUnitID="{35F0F65A-CDF1-4B7E-8A15-F07C7EE5834D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="outgoing" ID="{7A7FA734-F020-41B7-B7AA-F0876B3F1B42}">
+					<ChildrenList>
+						<Action Name="" ID="{1A9A22CE-A46E-4701-9B93-7EB788483636}" ShortID="183349911">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="send" ID="{22F45636-A159-4649-B6CB-E7D6074BFE12}" WorkUnitID="{35F0F65A-CDF1-4B7E-8A15-F07C7EE5834D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
