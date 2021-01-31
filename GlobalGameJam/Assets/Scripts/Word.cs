@@ -24,6 +24,8 @@ public class Word : MonoBehaviour
     [TextArea]
     public string CompleteResponseText;
 
+    public string LevelToLoad;
+
     void Awake()
     {
         Text.text = WordName;

@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
         CurrentWord = word;
         CurrentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene("LoadingTransition", LoadSceneMode.Additive);
-        SceneToLoad = CurrentLevel.LevelToLoad;
+        SceneToLoad = word.LevelToLoad;
     }
 
 }
