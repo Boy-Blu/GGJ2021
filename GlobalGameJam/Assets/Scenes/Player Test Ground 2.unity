@@ -2447,17 +2447,17 @@ PrefabInstance:
     - target: {fileID: 2632482282244494099, guid: db9e8df2d6faeff468bbf8acc87107d9,
         type: 3}
       propertyPath: WordOverwrite
-      value: OverwriteText
+      value: Bad
       objectReference: {fileID: 0}
     - target: {fileID: 2632482282244494099, guid: db9e8df2d6faeff468bbf8acc87107d9,
         type: 3}
       propertyPath: CompleteResponseText
-      value: I chose the overwrite text.
+      value: Bad. Don't wanna talk about it.
       objectReference: {fileID: 0}
     - target: {fileID: 2632482282244494102, guid: db9e8df2d6faeff468bbf8acc87107d9,
         type: 3}
       propertyPath: m_Name
-      value: Bad
+      value: WORD
       objectReference: {fileID: 0}
     - target: {fileID: 6137931080047452314, guid: db9e8df2d6faeff468bbf8acc87107d9,
         type: 3}
@@ -3059,7 +3059,7 @@ PrefabInstance:
     - target: {fileID: 2632482282244494099, guid: db9e8df2d6faeff468bbf8acc87107d9,
         type: 3}
       propertyPath: CompleteResponseText
-      value: I chose the text that says Good.
+      value: I feel pretty good.
       objectReference: {fileID: 0}
     - target: {fileID: 2632482282244494102, guid: db9e8df2d6faeff468bbf8acc87107d9,
         type: 3}
@@ -3263,6 +3263,11 @@ PrefabInstance:
         type: 3}
       propertyPath: LevelToLoad
       value: Player Test Ground 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7440822178872634084, guid: 969b3320f5028c24aa10f68316a55f2d,
+        type: 3}
+      propertyPath: CompleteText
+      value: How are you feeling?
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 969b3320f5028c24aa10f68316a55f2d, type: 3}
