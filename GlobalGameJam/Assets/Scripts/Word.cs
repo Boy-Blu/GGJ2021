@@ -21,6 +21,9 @@ public class Word : MonoBehaviour
 
     public TextMeshPro Text;
 
+    [TextArea]
+    public string CompleteResponseText;
+
     void Awake()
     {
         Text.text = WordName;
@@ -40,6 +43,6 @@ public class Word : MonoBehaviour
 
     void DestroySelf()
     {
-        Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
     }
 }

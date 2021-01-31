@@ -126,7 +126,6 @@ public class PlayerController : MonoBehaviour
             //check for ledge grabs
             if (_player.GetButton (RewiredMappings.GRAB))
             {
-                Debug.LogWarning("AttempGrabed Ledge!");
                 Vector3 LedgePos = Coli.CheckLedges();
                 if (LedgePos != Vector3.zero)
                 {
@@ -347,6 +346,7 @@ public class PlayerController : MonoBehaviour
             //Debug.Log(collision.collider.GetComponent<TMPro>().text); 
             OnPickupWord?.Invoke();
             OnPickupWord = null;
+            GameManager.Instance.LoadLevel(word);
         }
     }
 
