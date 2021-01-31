@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
         LedgeGrab, //pulling up a ledge
     }
 
+    public static bool CanMove;
+
     private PlayerCollision Coli;
     private Rigidbody Rigid;
     private CapsuleCollider Cap;
@@ -95,7 +97,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        CanMove = true;
         _player = ReInput.players.GetPlayer (_playerId);
         Coli = GetComponent<PlayerCollision>();      
         Rigid = GetComponent<Rigidbody>();
@@ -109,6 +111,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!CanMove)
+        {
+            return;
+        }
+
         float XMove = _player.GetAxis (RewiredMappings.MOVE_HORIZONTAL);
         float YMove = _player.GetAxis (RewiredMappings.MOVE_VERTICAL);
 
