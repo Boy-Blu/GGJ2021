@@ -14,4 +14,9 @@ public class TextAnimationController : MonoBehaviour
         SceneManager.LoadScene(GameManager.Instance.SceneToLoad, LoadSceneMode.Additive);
         _animator.SetTrigger("FadeOut");
     }
+
+    public void DisableMovement()
+    {
+        PlayerController.CanMove = false;
+    }
 }
