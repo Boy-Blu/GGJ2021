@@ -1,5 +1,5 @@
 using UnityEngine;
-// Variables for Items Mapping
+// Variables for REwired Mappings
 public class RewiredMappings {
     public const string MOVE_VERTICAL = "MoveY";
     public const string MOVE_HORIZONTAL = "MoveX";
@@ -8,4 +8,10 @@ public class RewiredMappings {
     public const string JUMP = "Jump";
     public const string CROUCH = "Slide";
     public const string GRAB = "Grab";
+}
+
+public class LevelNames {
+    public const string MAIN_MENU = "MainMenu";
+    public const string INTRO = "LEVEL1";
+
 }
