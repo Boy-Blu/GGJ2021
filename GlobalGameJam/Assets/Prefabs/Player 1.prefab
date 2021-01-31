@@ -225,10 +225,10 @@ MonoBehaviour:
   MaxLookAngle: 80
   MinLookAngle: -80
   JumpHeight: 6
-  WallRunTime: 2
-  TimeBeforeWallRun: 2
+  WallRunTime: 3
+  TimeBeforeWallRun: 0.75
   WallRunUpwardsMovement: 4
-  WallRunSpeedAcceleration: 2
+  WallRunSpeedAcceleration: 3
   CrouchSpeed: 4
   CrouchHeight: 0.5
   SlideAmt: 15
@@ -282,8 +282,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FloorCheckRadius: 0.43
   bottomOffset: 0.8
-  WallCheckRadius: 0.68
-  frontOffset: 0.34
+  WallCheckRadius: 0.81
+  frontOffset: 0.61
   RoofCheckRadius: 0.2
   upOffset: 1
   LedgeGrabForwardPos: 1.5
